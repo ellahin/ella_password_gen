@@ -37,11 +37,10 @@ fn get_strong_pass() -> String {
     all_symbols.push_str(upper_caps);
     all_symbols.push_str(sybols);
     
-    // checks that it has two of each type of sybols
+    // checks that it has required_symbols_count of each type of sybols
     let mut required_symbols: bool = false;
 
-
-    // checks that it has two of each type of sybols
+    // how many of each sybol there should bu
     let required_symbols_count: i32 = 3;
 
     while (entropy < 3) & !required_symbols{
@@ -49,9 +48,7 @@ fn get_strong_pass() -> String {
 
         entropy = get_entropy(&current_password);
 
-        required_symbols = check_requried_symbols(&current_password, &[numbers, lower_caps, upper_caps, sybols], required_symbols_count.clone())        
-
-
+        required_symbols = check_requried_symbols(&current_password, &[numbers, lower_caps, upper_caps, sybols], required_symbols_count.clone());
 
     }
 
