@@ -61,7 +61,7 @@ dependencies = [
 
 [[package]]
 name = "ella_password_gen"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "chbs_password_checker",
  "rand",
