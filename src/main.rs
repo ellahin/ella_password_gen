@@ -1,6 +1,6 @@
 use rand::prelude::*;
 use chbslib::get_entropy;
-use std::{io::stdin, vec};
+use std::io::stdin;
 
 fn gen_pass(len: i32, sybols: &String) -> String {
 
