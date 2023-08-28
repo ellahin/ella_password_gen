@@ -18,7 +18,7 @@ fn main() {
 
     while !options_correct {
         println!("{}", "Select from the below options:");
-        for (pos, c) in options.iter().enumerate(){
+        for (pos, _c) in options.iter().enumerate(){
             println!("{}: {}", options[pos], options_description[pos])
         }
 

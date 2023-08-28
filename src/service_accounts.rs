@@ -5,8 +5,6 @@ fn gen_pass(len: i32, sybols: &String) -> String {
 
     let char_vec: Vec<char> = sybols.chars().collect();
 
-    drop(sybols);
-
     let mut generated_password:String = String::new();
 
     for _n in 0..=len {
