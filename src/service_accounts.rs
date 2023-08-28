@@ -18,7 +18,7 @@ fn gen_pass(len: i32, sybols: &String) -> String {
     return generated_password
 }
 
-pub fn get_strong_pass() -> String {
+pub fn gen_service_pass() -> String {
 
     let mut current_password: String = String::from("");
 
