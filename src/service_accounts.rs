@@ -27,7 +27,7 @@ pub fn gen_service_pass() -> String {
     let numbers: &str = "0123456789";
     let lower_caps: &str = "abcdefghijklmnopqrstuvwxyz";
     let upper_caps: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let sybols: &str = "!@#$%^&*()";
+    let sybols: &str = "!@#$%^&*(){}[]<>,.";
 
     let mut all_symbols: String = "".to_owned();
 
