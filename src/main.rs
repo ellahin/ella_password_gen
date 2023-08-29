@@ -11,7 +11,7 @@ fn main() {
     let mut input_vec: Vec<char>= Vec::new();
 
     let options: Vec<char> = ['s', 'u'].to_vec();
-    let options_description: Vec<String> = ["Service account".to_owned(), "User ccount".to_owned()].to_vec();
+    let options_description: Vec<String> = ["Service account".to_owned(), "User account".to_owned()].to_vec();
     let options_functions: Vec<&dyn Fn() -> String> = vec![&gen_service_pass, &gen_user_pass];
     
     let mut options_correct: bool = false;
