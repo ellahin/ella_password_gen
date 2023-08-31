@@ -1,31 +1,48 @@
 mod service_accounts;
 mod user_accounts;
+mod password_type;
 use std::io::stdin;
 use service_accounts::gen_service_pass;
 use user_accounts::gen_user_pass;
+use password_type::PasswordOption;
 
 
 fn main() {
 
     let mut input_string = String::new();
-    let mut input_vec: Vec<char>= Vec::new();
 
-    let options: Vec<char> = ['s', 'u'].to_vec();
-    let options_description: Vec<String> = ["Service account".to_owned(), "User account".to_owned()].to_vec();
-    let options_functions: Vec<&dyn Fn() -> String> = vec![&gen_service_pass, &gen_user_pass];
+    let options_structs: Vec<PasswordOption> = [
+        PasswordOption {
+            option_char: 's',
+            discription_string: "Service Account".to_owned(),
+            password_function: gen_service_pass,
+        },
+        PasswordOption {
+            option_char: 'u',
+            discription_string: "User account".to_owned(),
+            password_function: gen_user_pass,
+        }
+    ].to_vec();
     
-    let mut options_correct: bool = false;
+    let mut working_option: Option<PasswordOption> = None; 
 
-    while !options_correct {
+    while working_option.is_none() {
+
         println!("{}", "Select from the below options:");
-        for (pos, _c) in options.iter().enumerate(){
-            println!("{}: {}", options[pos], options_description[pos])
+        for _p in &options_structs{
+            println!("{}: {}", _p.option_char, _p.discription_string)
         }
 
         stdin().read_line(&mut input_string).ok().expect("Failed to read line");
-        input_vec = input_string.trim().chars().collect();
+        let input_vec: Vec<char> = input_string.trim().chars().collect();
         input_string = String::new();
-        options_correct = options.contains(&input_vec[0]);
+        
+        for _p in &options_structs{
+            if input_vec[0] == _p.option_char {
+                working_option = Some(_p.clone());
+                break;
+            }
+        } 
     }
 
     println!("{}", "How many passwords do you want: ");
@@ -33,10 +50,8 @@ fn main() {
 
     let pass_amount: i32 = input_string.trim().parse().unwrap();
 
-    let function_index = options.iter().position(|&r| r == input_vec[0]).unwrap();
-
     for _n in 1..=pass_amount {
-        println!("{}", options_functions[function_index]())
+        println!("{}", (working_option.clone().unwrap().password_function)())
     }
 
 }
