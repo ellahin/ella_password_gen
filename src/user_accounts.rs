@@ -28,6 +28,5 @@ pub fn gen_user_pass() -> String {
 
     working_password.push(sybols[thread_rng().gen_range(0..=(sybols.len() - 1))]);
 
-    return working_password.iter().collect()
-
+    return working_password.iter().collect();
 }
